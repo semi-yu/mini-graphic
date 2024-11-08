@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 3.16)
+project(mini-graphic)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+find_package(OpenGL REQUIRED)
+
+set(GLFW_DIR "${CMAKE_SOURCE_DIR}/external/glfw")
+add_subdirectory(${GLFW_DIR})
+
+set(GLM_DIR "${CMAKE_SOURCE_DIR}/external/glm")
+add_subdirectory(${GLM_DIR})
+
+set(FMT_DIR "${CMAKE_SOURCE_DIR}/external/fmt")
+add_subdirectory(${FMT_DIR})
+
+add_library(glad "external/glad/src/glad.c")
+target_include_directories(glad PRIVATE "external/glad/include")
+
+set(SOURCES
+    src/main.cpp
+)
+
+add_executable(mini-graphic ${SOURCES})
+
+target_link_libraries(mini-graphic PRIVATE fmt glfw glad glm OpenGL::GL)
+
+target_include_directories(mini-graphic PRIVATE include ${GLFW_DIR}/include "external/glad/include")
