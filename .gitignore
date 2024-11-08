@@ -4,6 +4,7 @@
 ### project specific
 .vscode
 external/*
+build/
 
 ### C++ ###
 # Prerequisites
