@@ -1,0 +1,16 @@
+#version 430 core
+in vec4 mid_fill_color;
+in vec4 mid_stroke_color;
+
+out vec4 FragColor;
+
+uniform int draw_mode;
+
+void main() {
+    if (draw_mode == 0) {
+        FragColor = mid_fill_color;
+    }
+    else if (draw_mode == 1) {
+        FragColor = mid_stroke_color;
+    }
+}
