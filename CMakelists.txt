@@ -23,7 +23,7 @@ add_library(glad "external/glad/src/glad.c")
 target_include_directories(glad PRIVATE "external/glad/include")
 
 set(SOURCES
-    src/main.cpp
+    project/src/main.cpp
 )
 
 add_executable(mini-graphic ${SOURCES})
